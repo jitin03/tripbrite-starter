@@ -11,10 +11,16 @@
   "author": "Jitin Doriya",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^7.0.0",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^5.13.22",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "validator": "^13.11.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
