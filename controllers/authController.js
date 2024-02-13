@@ -25,6 +25,7 @@ const createSendToken = (user, statusCode, res) => {
   // Remove password from output
   user.password = undefined;
 
+  console.log(user);
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -47,18 +48,7 @@ const signup = catchAsync(async (req, res, next) => {
     return next(new AppError(`User creation failed`, 500));
   }
 
-  const token = jwt.sign(
-    { id: newUser._id, role: newUser.role },
-    process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: '30m' }
-  );
-
-  res.status(201).json({
-    status: 'success',
-    data: {
-      user: newUser
-    }
-  });
+  createSendToken(newUser, 201, res);
 });
 
 const login = catchAsync(async (req, res, next) => {
