@@ -1,8 +1,9 @@
+const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const { promisify } = require('util');
-const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
+
 const verifyAuth = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
   let token;

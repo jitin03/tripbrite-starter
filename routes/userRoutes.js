@@ -1,10 +1,15 @@
 const express = require('express');
+const router = express.Router();
 const authController = require('../controllers/authController');
 const authMiddleware = require('../middleware/authMiddleware');
 
-const router = express.Router();
+const tenantRouter = require('./tenantRoutes');
+
+router.use('/:userId/tenant', tenantRouter);
+router.use('/tenant', tenantRouter);
 
 router.route('/signup').post(authController.signup);
+
 router.route('/login').post(authController.login);
 router.route('/google-login').post(authController.googleLogin);
 
